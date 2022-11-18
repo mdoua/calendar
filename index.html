@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MI program</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/script.js"></script>
 
 </head>
@@ -17,8 +18,8 @@
 
     <header>
         <a href="#" class="logo">MI Program.</a>
-        
-        <nav class="navbar"  id="navb">  
+
+        <nav class="navbar" id="navb">
             <ul>
                 <li><a class="active" href="#home">Home</a></li>
                 <li><a href="#mentors">Mentors</a></li>
@@ -36,16 +37,44 @@
 
     <!-- home section -->
     <section class="home" id="home">
+
         <div class="row">
- 
-                <div class="image">
-                    <img src="images/mentoring1.jpg" alt="">
-                </div>
+            <div class="content">
+                <h1>Welcome to our Program.</h1>
+                <h2>What ever the weather is we are waiting you.</h2>
+                <p></p>
+            </div>
+        </div>
+
+        <div>
+            <div class="weather-container">
+                <h1>Today weather :</h1>
+
+                <img class="icon" alt="">
+                <p class="weather"></p>
+                <p class="temp"></p>
+                <script>
+
+                    $.getJSon("http://api.openweathermap.org/data/2.5/weather?q=Cincinnati&APPID=0d7ed9ff8c390ee6722a92c1a0b2623c",
+                        function (data) {
+                            alert(22254445);
+                            alert(data.weather[0].icon);
+                            let icon = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+                            let temp = data.main.temp;
+                            let weather = data.weather[0].main;
+                            alert(temp);
+                            alert(weather);
+                            $(".icon").attr("src", icon);
+                            $(".temp").append(temp);
+                            $(".weather").append(weather);
+                        }
+                    );
+                </script>
+            </div>
         </div>
     </section>
 
-
-    <!-- menu section  -->
+    <!-- mentors section  -->
 
     <section class="mentors" id="mentors">
 
@@ -57,7 +86,7 @@
                 <div class="image">
                     <img src="images/mentor1.jpg" alt="">
                 </div>
-                    
+
                 <div class="content">
                     <h3>Mentor 1 </h3>
                     <p>bref description</p>
@@ -84,7 +113,7 @@
                     <h3>Mentor 3</h3>
                     <p>bref description</p>
                     <a href="#apt" class="btn">schedule now</a>
-                    
+
                 </div>
             </div>
 
@@ -97,7 +126,7 @@
                     <h3>Mentor 4</h3>
                     <p>bref description.</p>
                     <a href="#apt" class="btn">schedule now</a>
-                    
+
                 </div>
             </div>
 
@@ -110,7 +139,7 @@
                     <h3>Mentor 5</h3>
                     <p>Bref description.</p>
                     <a href="#apt" class="btn">schedule now</a>
-                    
+
                 </div>
             </div>
 
@@ -133,8 +162,8 @@
 
         <h1 class="heading"> Appointments </h1>
         <h1 class="sub-heading"> Please select the mentor and the shift you want. </h1>
-     
-        <form name="myForm" onclick= "">
+
+        <form name="myForm" onclick="">
             <h3 class="sub-heading" id="confMsg"></h3>
             <div class="inputBox">
                 <div class="input">
@@ -145,7 +174,7 @@
 
                 <div class="input">
                     <span>Shift:</span>
-                    <select name="shift" id="shifts" >
+                    <select name="shift" id="shifts">
                     </select>
                 </div>
 
@@ -176,7 +205,7 @@
             </div>
 
             <input type="submit" value="Confirm" onclick=myFun(this.parentElement) class="btn">
-        </form>    
+        </form>
 
 
     </section>
@@ -188,7 +217,7 @@
             <p><small>&copy;2022 MI PROGRAM - All right reserved</small></p>
         </div>
     </section>
- 
+
 </body>
 
 
